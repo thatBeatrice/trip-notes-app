@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAPI", "TravelAPI.csproj", "{C5253BC1-3701-41FE-863C-668CABE02AC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelApiTests", "..\TravelApiTests\TravelApiTests.csproj", "{1E5B4AA4-A7C8-469C-96E1-8AA8CCDF12F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelApiIntegrationTests", "..\TravelApiIntegrationTests\TravelApiIntegrationTests.csproj", "{959248A7-323E-4EA7-883B-9CA95BA4A000}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5253BC1-3701-41FE-863C-668CABE02AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5253BC1-3701-41FE-863C-668CABE02AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5253BC1-3701-41FE-863C-668CABE02AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5253BC1-3701-41FE-863C-668CABE02AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5B4AA4-A7C8-469C-96E1-8AA8CCDF12F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5B4AA4-A7C8-469C-96E1-8AA8CCDF12F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5B4AA4-A7C8-469C-96E1-8AA8CCDF12F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5B4AA4-A7C8-469C-96E1-8AA8CCDF12F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{959248A7-323E-4EA7-883B-9CA95BA4A000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959248A7-323E-4EA7-883B-9CA95BA4A000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959248A7-323E-4EA7-883B-9CA95BA4A000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959248A7-323E-4EA7-883B-9CA95BA4A000}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

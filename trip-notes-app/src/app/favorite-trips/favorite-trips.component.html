@@ -1,0 +1,13 @@
+<a mat-button (click)="back()">Back</a>
+<div class="favorite-card-layout">
+  @for (item of tripNotes; track item.id) {
+  <app-trip-note
+    [id]="item.id"
+    [place]="item.place"
+    [description]="item.description"
+    [dateFrom]="item.dateFrom"
+    [dateTo]="item.dateTo"
+    [rating]="item.rating"
+  ></app-trip-note>
+  }
+</div>

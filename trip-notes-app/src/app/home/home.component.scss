@@ -1,0 +1,85 @@
+.home-toolbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.home-title {
+  color: black;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.home-filter-button {
+  margin-left: auto;
+  font-size: large;
+  color: black !important;
+}
+
+.home-add-button {
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 40%;
+  background-color: white;
+}
+
+.home-add-icon {
+  color: black;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-card-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.famous-card-layout{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.home-container {
+  block-size: 100%;
+  background-color: white;
+}
+
+.home-sidenav {
+  background-color: white;
+  color: black;
+  border-radius: none;
+  block-size: 100vh;
+}
+
+.sidenav-expansion-panel {
+  background-color: white;
+  color: black;
+}
+
+.expansion-panel-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.expansion-title {
+  color: black;
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+}
+
+.home-search-bar{
+  background-color: white;
+}
+
+.abc{
+  background-color: white;
+}

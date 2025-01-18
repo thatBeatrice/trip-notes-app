@@ -1,0 +1,159 @@
+<mat-sidenav-container class="home-container">
+  <mat-sidenav-content>
+    <mat-toolbar class="home-toolbar">
+      <h1 class="home-title">Travel App</h1>
+      <button mat-button [matMenuTriggerFor]="sortingMenu">Sort</button>
+      <a mat-button routerLink="/favorites" routerLinkActive="active"
+        >Favorites</a
+      >
+      <mat-menu #sortingMenu="matMenu">
+        <button mat-menu-item (click)="sortNotes(sortType.ASCENDING)">
+          Ascending
+        </button>
+        <button mat-menu-item (click)="sortNotes(sortType.DESCENDING)">
+          Descending
+        </button>
+        <button mat-menu-item (click)="sortNotes(sortType.ALPHABETICALLY)">
+          Alphabetically
+        </button>
+        <button mat-menu-item (click)="sortNotes(sortType.NONE)">None</button>
+      </mat-menu>
+
+      <form>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Search trip note..."
+            [formControl]="searchValue"
+          />
+          @if (searchValue) {
+          <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="searchValue.setValue('')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          }
+        </mat-form-field>
+      </form>
+
+      <div class="note-count">
+        {{ notesAdded() }}
+      </div>
+
+      <button mat-button class="home-filter-button" (click)="sidenav.toggle()">
+        Filter
+      </button>
+      <button mat-fab class="home-add-button">
+        <mat-icon class="home-add-icon" (click)="openDialog(false)"
+          >add</mat-icon
+        >
+      </button>
+    </mat-toolbar>
+    <div class="home-card-layout">
+      @if(isData){ @for (item of tripNotes; track item.id) {
+      <app-trip-note
+        [id]="item.id"
+        [place]="item.place"
+        [description]="item.description"
+        [dateFrom]="item.dateFrom"
+        [dateTo]="item.dateTo"
+        [rating]="item.rating"
+        (delete)="onNoteDelete($event)"
+      ></app-trip-note>
+      } } @else {
+      <div class="myText">There is no data to display</div>
+      }
+    </div>
+
+    <!-- <div class="famous-card-layout">
+      <app-famous-trip tripType="Best"
+        ><app-trip-note
+          [id]="bestNote.id"
+          [place]="bestNote.place"
+          [description]="bestNote.description"
+          [dateFrom]="bestNote.dateFrom"
+          [dateTo]="bestNote.dateTo"
+          [rating]="bestNote.rating"
+          (delete)="onNoteDelete($event)"
+        ></app-trip-note
+      ></app-famous-trip>
+      <app-famous-trip tripType="Worst"
+        ><app-trip-note
+          [id]="worstNote.id"
+          [place]="worstNote.place"
+          [description]="worstNote.description"
+          [dateFrom]="worstNote.dateFrom"
+          [dateTo]="worstNote.dateTo"
+          [rating]="worstNote.rating"
+          (delete)="onNoteDelete($event)"
+        ></app-trip-note
+      ></app-famous-trip>
+    </div> -->
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav position="end" mode="side" class="home-sidenav">
+    <mat-accordion multi>
+      <mat-expansion-panel class="sidenav-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="expansion-title"> By rating </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-slider [min]="1" [max]="5" [step]="0.5" showTickMarks discrete>
+          <input
+            matSliderThumb
+            #slider
+            [(ngModel)]="ratingValue"
+            (change)="filterNotes()"
+          />
+        </mat-slider>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="sidenav-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="expansion-title"> By date </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion-panel-content">
+          <form [formGroup]="dates">
+            <mat-form-field>
+              <mat-label>Start date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="startDatePicker"
+                formControlName="startDate"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="startDatePicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>End date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endDatePicker"
+                formControlName="endDate"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="endDatePicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
+
+            @if(dates.invalid && (dates.dirty || dates.touched)) {
+            <div class="error-text">Invalid date range</div>
+            }
+          </form>
+        </div>
+      </mat-expansion-panel>
+      <button mat-button (click)="resetFilters()">Reset</button>
+    </mat-accordion>
+  </mat-sidenav>
+</mat-sidenav-container>

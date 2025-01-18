@@ -1,0 +1,15 @@
+.note-card {
+    min-block-size: 30rem;
+    border-width: 0.1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: black;
+}
+
+.note-card-image {
+    background-size: cover;
+    inline-size: 100%;
+    block-size: 15rem;
+}

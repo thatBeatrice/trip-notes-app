@@ -1,0 +1,25 @@
+<mat-card appearance="outlined" class="note-card">
+    <mat-card-title>{{place() | titleCaseCustom}}</mat-card-title>
+    <img class="note-card-image" src="./assets/image{{photoId}}.jpg" alt="Photo of a place">
+    <mat-card-content>
+        {{description()}}
+        <br>
+        {{dateFrom() | date:'short'}}
+        <br>
+        {{dateTo() | date:'short'}}
+        <br>
+        {{rating()}}
+        <br>
+        @if(addHeartAboveRating()){
+            <mat-icon>favorite</mat-icon>
+        }
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="openDialog(true)">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button (click)="deleteNote()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
