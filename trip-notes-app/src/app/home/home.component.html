@@ -2,25 +2,9 @@
   <mat-sidenav-content>
     <mat-toolbar class="home-toolbar">
       <h1 class="home-title">Travel App</h1>
-      <button mat-button [matMenuTriggerFor]="sortingMenu">Sort</button>
-      <a mat-button routerLink="/favorites" routerLinkActive="active"
-        >Favorites</a
-      >
-      <mat-menu #sortingMenu="matMenu">
-        <button mat-menu-item (click)="sortNotes(sortType.ASCENDING)">
-          Ascending
-        </button>
-        <button mat-menu-item (click)="sortNotes(sortType.DESCENDING)">
-          Descending
-        </button>
-        <button mat-menu-item (click)="sortNotes(sortType.ALPHABETICALLY)">
-          Alphabetically
-        </button>
-        <button mat-menu-item (click)="sortNotes(sortType.NONE)">None</button>
-      </mat-menu>
 
       <form>
-        <mat-form-field>
+        <mat-form-field class="home-search-bar">
           <input
             matInput
             placeholder="Search trip note..."
@@ -39,11 +23,26 @@
         </mat-form-field>
       </form>
 
-      <div class="note-count">
-        {{ notesAdded() }}
+      <div
+        class="note-count"
+        matTooltip="Only the notes added this session. Do not refresh :D"
+        [matTooltipPosition]="'below'"
+      >
+        Notes added: {{ notesAdded() }}
       </div>
 
-      <button mat-button class="home-filter-button" (click)="sidenav.toggle()">
+      <a
+        mat-button
+        class="home-favorite-button home-button"
+        routerLink="/favorites"
+        routerLinkActive="active"
+        >Favorites</a
+      >
+      <button mat-button class="home-button" [matMenuTriggerFor]="sortingMenu">
+        Sort
+      </button>
+
+      <button mat-button class="home-button" (click)="sidenav.toggle()">
         Filter
       </button>
       <button mat-fab class="home-add-button">
@@ -51,6 +50,19 @@
           >add</mat-icon
         >
       </button>
+
+      <mat-menu #sortingMenu="matMenu">
+        <button mat-menu-item (click)="sortNotes(sortType.ASCENDING)">
+          Ascending
+        </button>
+        <button mat-menu-item (click)="sortNotes(sortType.DESCENDING)">
+          Descending
+        </button>
+        <button mat-menu-item (click)="sortNotes(sortType.ALPHABETICALLY)">
+          Alphabetically
+        </button>
+        <button mat-menu-item (click)="sortNotes(sortType.NONE)">None</button>
+      </mat-menu>
     </mat-toolbar>
     <div class="home-card-layout">
       @if(isData){ @for (item of tripNotes; track item.id) {

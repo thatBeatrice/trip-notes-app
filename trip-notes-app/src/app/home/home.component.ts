@@ -20,12 +20,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { CustomSnackBarComponent } from '../custom-snack-bar/custom-snack-bar.component';
 import { dateValidator } from '../custom-validators';
 import { SortType, ToastType } from '../enums';
-import { FamousTripComponent } from '../famous-trip/famous-trip.component';
 import { ModalComponent } from '../modal/modal.component';
 import { Note } from '../models/note';
 import { NotesFacade } from '../state/notes-facade.service';
@@ -51,7 +51,8 @@ import { TripNoteComponent } from '../trip-note/trip-note.component';
     MatMenuModule,
     ReactiveFormsModule,
     RouterModule,
-    FamousTripComponent,
+    MatTooltipModule,
+    // FamousTripComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

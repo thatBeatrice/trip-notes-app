@@ -1,15 +1,28 @@
 .note-card {
-    min-block-size: 30rem;
-    border-width: 0.1rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: black;
+  min-block-size: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: black;
+
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 0.1rem solid #e0e0e0;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 }
 
 .note-card-image {
-    background-size: cover;
-    inline-size: 100%;
-    block-size: 15rem;
+  background-size: cover;
+  inline-size: 100%;
+  block-size: 15rem;
+}
+
+.note-action-button{
+  color: #a86ff9;
 }
