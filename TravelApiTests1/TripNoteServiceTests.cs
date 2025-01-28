@@ -33,7 +33,7 @@ namespace TravelApiTests
         [Fact]
         public void TripNoteService_GetAll_Success()
         {
-            var notes = new List<TripNoteModel>([
+            var notes = new List<TripNoteModel> {
                     new TripNoteModel {
                         Id = Guid.NewGuid(),
                         Place = "Brasov",
@@ -58,7 +58,7 @@ namespace TravelApiTests
                         Description = "testt#3",
                         Rating = 5f
                     }
-                    ]);
+                    };
 
             var expectedResult = notes.ConvertAll(note => TripNoteMapper.ToTripNoteDtoMap(note)).AsEnumerable();
 
@@ -106,7 +106,7 @@ namespace TravelApiTests
         [Fact]
         public void TripNoteService_UpdateTripNote_Success()
         {
-            var notes = new List<TripNoteModel>([
+            var notes = new List<TripNoteModel> {
                    new TripNoteModel {
                         Id = Guid.Parse("b352ccf7-3060-4991-a22f-5d0f48638977"),
                         Place = "Brasov",
@@ -131,7 +131,7 @@ namespace TravelApiTests
                         Description = "testt#3",
                         Rating = 5f
                     }
-                   ]);
+                   };
             Guid noteId = Guid.Parse("b352ccf7-3060-4991-a22f-5d0f48638977");
             TripNoteDto updatedNote = new TripNoteDto
             {
@@ -144,15 +144,13 @@ namespace TravelApiTests
             };
 
 
-            _tripNoteRepositoryMock.Setup(x => x.UpdateTripNote(It.IsAny<Guid>(), It.IsAny<TripNoteModel>()))
-                           .ReturnsAsync(TripNoteMapper.ToTripNoteMap(updatedNote));
-
+            _tripNoteRepositoryMock.Setup(x => x.UpdateTripNote(noteId, It.IsAny<TripNoteModel>())).ReturnsAsync(true);
 
             _tripNoteService = new TripService(_tripNoteRepositoryInstance);
 
             var result = _tripNoteService.UpdateTripNote(noteId, updatedNote);
 
-            Assert.Equivalent(updatedNote, result);
+            Assert.True(result);
         }
 
         [Fact]
