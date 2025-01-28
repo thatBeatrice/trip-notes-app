@@ -1,7 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { AppState, NotesState } from '../models/notes.state';
 import { SortType } from '../enums';
-import { create } from 'domain';
+import { AppState, NotesState } from '../models/notes.state';
 
 export const selectFeature = (state: AppState) => state.notes;
 
@@ -102,14 +101,13 @@ export const selectFilteredNotes = createSelector(
             return bDateFrom.getTime() - aDateFrom.getTime();
           case SortType.ALPHABETICALLY:
             return a.place.localeCompare(b.place);
-            default:
-              return 0;
+          default:
+            return 0;
         }
       });
   }
 );
 
-export const selectFavoriteTrips = createSelector(
-  selectNotes,
-  (notes) => notes.filter((note) => note.rating >= 4)
+export const selectFavoriteTrips = createSelector(selectNotes, (notes) =>
+  notes.filter((note) => note.rating >= 4)
 );

@@ -10,5 +10,6 @@ export default defineConfig({
     ],
 
     setupNodeEvents(on, config) {},
+
   },
 });
